@@ -1,4 +1,4 @@
-package com.joe.spring5web;
+package com.joe.spring6web;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
