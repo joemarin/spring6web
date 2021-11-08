@@ -26,6 +26,12 @@ public class Book implements Serializable {
     )
     private Set<Author> authors  = new HashSet<>();;
 
+    @ManyToMany
+    @JoinTable(name = "publisher_book", joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "publisher_id")
+    )
+    private Set<Author> publishers  = new HashSet<>();
+    
     public Book() {
     }
 
@@ -66,11 +72,18 @@ public class Book implements Serializable {
         this.authors = authors;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" + "id=" + id + ", title=" + title + ", isbn=" + isbn + ", authors=" + authors + '}';
+    public Set<Author> getPublishers() {
+        return publishers;
     }
 
+    public void setPublishers(Set<Author> publishers) {
+        this.publishers = publishers;
+    }
+    
+    @Override
+    public String toString() {
+        return "Book{" + "id=" + id + ", title=" + title + ", isbn=" + isbn + ", authors=" + authors + ", publishers=" + publishers + '}';
+    }
     
     @Override
     public boolean equals(Object o) {
