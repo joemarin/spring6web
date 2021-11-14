@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Publisher implements Serializable {
@@ -22,7 +23,8 @@ public class Publisher implements Serializable {
     private String stateCode;
     private String zip;
 
-    @ManyToMany(mappedBy = "publishers")
+    @OneToMany
+    @JoinColumn(name = "publisher_id") //tells hybernate to assign a publisher_id to the record
     private Set<Book> books = new HashSet<>();
 
     public Publisher() {
