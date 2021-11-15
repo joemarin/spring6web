@@ -17,7 +17,7 @@ public class AuthorController {
     public String getBooks(Model model) {
         model.addAttribute( "authors", authorRepository.findAll() );
         
-        return "authors/listAuthors";
+        return "authors/list";
     }
     
 }
