@@ -1,4 +1,4 @@
-package com.joe.spring6web;
+package com.joe.spring6web.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

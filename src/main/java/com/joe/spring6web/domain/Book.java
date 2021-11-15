@@ -42,9 +42,10 @@ public class Book implements Serializable {
     public Book() {
     }
 
-    public Book(String title, String isbn) {
+    public Book(String title, String isbn, Publisher publisher) {
         this.title = title;
         this.isbn = isbn;
+        this.publisher = publisher;
     }
 
     public Long getId() {
@@ -98,7 +99,7 @@ public class Book implements Serializable {
     
     @Override
     public String toString() {
-        return "Book{" + "id=" + id + ", title=" + title + ", isbn=" + isbn + ", authors=" + authors + ", publisher=" + publisher + '}';
+        return "Book{" + "id=" + id + ", title=" + title + ", isbn=" + isbn + '}';
     }
     
     @Override

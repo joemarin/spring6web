@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+    <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:th="http://www.thymeleaf.org"
+          xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>List of Authos</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link th:href="@{/resources/css/bootstrap.css}" rel="stylesheet" type="text/css"/>
+        <link th:href="@{/resources/css/bootstrap-theme.css}" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Publisher</th>
+            </tr>
+            <tr th:each="author : ${authors}">
+                <td th:text="${author.id}"></td>
+                <td th:text="${author.firstname}"></td>
+                <td th:text="${author.lastname}"></td>
+                <td th:text="${author.books.title}"></td>
+            </tr>
+        </table>
+    </body>
+</html>

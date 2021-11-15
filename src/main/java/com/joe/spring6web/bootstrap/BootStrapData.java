@@ -8,7 +8,6 @@ import com.joe.spring6web.domain.repositories.BookRepository;
 import com.joe.spring6web.domain.repositories.PublisherRepository;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -30,13 +29,11 @@ public class BootStrapData implements CommandLineRunner {
     public void run (String... args ) throws Exception {
         Author a = new Author("Eric", "Evans");
         Author a2 = new Author("Joe", "Evans");
-        
-        Book b = new Book("Domain Driven Design", "123");
-        Book b2 = new Book("Joe's Book", "123");
-        Book b3 = new Book("Joe2's Book", "123");
-        
-        Publisher p = new Publisher("Calle del Rey", "Sto Domingo", "CR", "123");
-        
+        Publisher p = new Publisher("Joe's", "Calle del Rey", "Sto Domingo", "CR", "123");
+      
+        Book b = new Book("Domain Driven Design", "123", p);
+        Book b2 = new Book("Joe's Book", "123", p);
+        Book b3 = new Book("Joe2's Book", "123", p);
 
         publisherRepository.save(p);
         authorRepository.save(a);
@@ -50,10 +47,14 @@ public class BootStrapData implements CommandLineRunner {
         p.getBooks().add(b3);
         
         b.setAuthors( new HashSet<>( Arrays.asList( new Author[]{a, a2} )) );
-        
+        b.setPublisher(p);
+        b2.setPublisher(p);
+        b3.setPublisher(p);
         publisherRepository.save(p);
         authorRepository.save(a);
         bookRepository.save(b);
+        bookRepository.save(b2);
+        bookRepository.save(b3);
         //bookRepository.save(b2);
         
         System.out.println("Started in bootstrap");

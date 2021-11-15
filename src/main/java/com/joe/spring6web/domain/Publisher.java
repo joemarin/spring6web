@@ -18,6 +18,7 @@ public class Publisher implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+    private String nom;
     private String addressLine;
     private String city;
     private String stateCode;
@@ -30,13 +31,31 @@ public class Publisher implements Serializable {
     public Publisher() {
     }
 
-    public Publisher(String addressLine, String city, String stateCode, String zip) {
+    public Publisher(String nom, String addressLine, String city, String stateCode, String zip) {
+        this.nom = nom;
         this.addressLine = addressLine;
         this.city = city;
         this.stateCode = stateCode;
         this.zip = zip;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getStateCode() {
+        return stateCode;
+    }
+
+    public void setStateCode(String stateCode) {
+        this.stateCode = stateCode;
+    }
+
+        
     public String getAddressLine() {
         return addressLine;
     }
@@ -84,10 +103,10 @@ public class Publisher implements Serializable {
     public void setBooks(Set<Book> books) {
         this.books = books;
     }
-    
+
     @Override
     public String toString() {
-        return "Publisher{" + "id=" + id + ", addressLine=" + addressLine + ", city=" + city + ", stateCode=" + stateCode + ", zip=" + zip + '}';
+        return "Publisher{" + "id=" + id + ", name=" + nom + ", addressLine=" + addressLine + ", city=" + city + ", stateCode=" + stateCode + ", zip=" + zip + '}';
     }
     
     @Override
